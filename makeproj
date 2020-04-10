@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Makeproj is a very simple script for quick generation of C/C++ makefiles 
+#
+# Author: jsxof
+# License: MIT License
+# Please check LICENSE file for further licensing details
+
+makefile_data="Q0ZMQUdTIDo9IC1XYWxsIC1zdGQ9Yzk5IC1mc3RhY2stcHJvdGVjdG9yLXN0cm9uZyAtTzIgLXBpcGUgLVdlcnJvcj1mb3JtYXQtc2VjdXJpdHkKTERGTEFHUyA6PSAKCk9CSiA6PSBzcmMvbWFpbi5vCgpSRVBMQUNFX0VYRUNVVEFCTEU6ICQoT0JKKQoJJChDQykgJChDRkxBR1MpICQoTERGTEFHUykgJChPQkopIC1vICRACgphbGw6IFJFUExBQ0VfRVhFQ1VUQUJMRQoKY2xlYW46Cgktcm0gLXIgUkVQTEFDRV9FWEVDVVRBQkxFICQoT0JKKQoKLlBIT05ZOiBjbGVhbgouU1VGRklYRVM6IC5jIC5vCg=="
+
+if [ $# -eq 0 ]
+then
+    echo "No project name supplied"
+    exit 1
+fi
+
+echo $makefile_data | base64 -d | sed -e "s/REPLACE_EXECUTABLE/$1/g" - > Makefile
